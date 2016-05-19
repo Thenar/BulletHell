@@ -14,18 +14,17 @@ function love.update(dt)
 		love.event.push('quit')
 	end
 	
-	if love.keyboard.isScancodeDown('x') then
-		state=true
-	else
-		state=false
-	end
-	
 	p:move(dt)
 	p:shoot(dt)
 	p:update(dt)
 	
 end
 
+function love.keypressed(key, scancode, isrepeat)
+	if scancode == 'x' then
+		state = not state -- negation
+	end
+end
 
 function love.draw(dt)
 	p:draw()
